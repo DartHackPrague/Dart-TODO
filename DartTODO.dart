@@ -37,7 +37,6 @@ class DartTODO {
 
 void main() {
   new DartTODO().run();
-  
-  var list = new Cookies().readCookie('task');
-  window.alert(list);
+  var taksList = new Cookies().readCookie('task');
+  document.query('#tasks').nodes.add(taksList);
 }
