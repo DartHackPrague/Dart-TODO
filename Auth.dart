@@ -3,9 +3,7 @@
 class Auth {
   
   final String ISS = '444182523525.apps.googleusercontent.com';
-  
-  final String SCOPE = 'https://www.googleapis.com/auth/tasks';
-  
+  final String SCOPE = 'https://www.googleapis.com/auth/tasks';  
   final String AUD = 'https://accounts.google.com/o/oauth2/token';
   
   // Constructor.  
