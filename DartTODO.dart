@@ -1,4 +1,6 @@
 #import('dart:html');
+#import('Auth.dart');
+#import("Base64.dart");
 
 class DartTODO {
 
@@ -6,6 +8,15 @@ class DartTODO {
   }
 
   void run() {
+    Auth auth = new Auth();
+    String request = auth.buildJWT();
+    
+    Base64 base64 = new Base64();
+    
+    String out = base64.encode(request);
+    print(out);
+    
+    
     write("Hello World!");
   }
 
