@@ -18,7 +18,6 @@ class DartTODO {
     span.on.click.add((e) => deleteTask(element));
     element.nodes.add(span);
     document.query('#tasks').nodes.add(element);
-    input.value = '';  
     }
   }
   
@@ -36,7 +35,7 @@ class DartTODO {
       element.nodes.add(span);
       document.query('#tasks').nodes.add(element);
       input.value = '';
-      document.cookie = 'task='+ task +'; Path=/;';   
+      new Cookies().createCookie('task',task,360);
     }
   }
     
