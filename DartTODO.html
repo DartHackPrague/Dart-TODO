@@ -7,8 +7,6 @@
     
   </head>
   <body>
-    <h2 id="status">dart is not running</h2>
-    
     <script type="application/dart" src="DartTODO.dart"></script>
     <script src="http://dart.googlecode.com/svn/branches/bleeding_edge/dart/client/dart.js"></script>
     
@@ -23,7 +21,10 @@
     	
     	<!-- BODY START -->
     	<div id="body">
-    		<input type="text" id="newTask" />
+    		<form>
+	    		<label for="newTask">New task:</label>
+	    		<input type="text" id="newTask" />
+    		</form>
     		<div id="addNewTask">Add task</div>
     		<div id="tasks">    			
     		</div>
