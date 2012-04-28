@@ -3,11 +3,42 @@
 <html>
   <head>
     <title>DartTODO</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"  media="screen" />
+    
   </head>
   <body>
-    <h1>DartTODO</h1>
-    <h2 id="status">dart is not running</h2>
     <script type="application/dart" src="DartTODO.dart"></script>
     <script src="http://dart.googlecode.com/svn/branches/bleeding_edge/dart/client/dart.js"></script>
+    
+    <!-- CONTAINER START -->
+    <div id="container">
+    
+    	<!-- HEADER START -->
+    	<div id="header">
+    		<h1>Dart TODO</h1>
+    	</div>
+    	<!-- HEADER STOP -->
+    	
+    	<!-- BODY START -->
+    	<div id="body">
+    		<div id="messages"></div>
+    		<form>
+	    		<label for="newTask">New task:</label>
+	    		<input type="text" id="newTask" />    		
+    			<div id="addNewTask">Add task</div>
+    		</form>
+    		<div id="tasks">    			
+    		</div>
+    	</div>
+    	<!-- BODY STOP -->
+    	
+    	<!-- FOOTER START -->
+    	<div id="footer">
+    	</div>
+    	<!-- FOOTER STOP -->
+    
+    </div>
+    <!-- CONTAINER STOP -->
+    
   </body>
 </html>

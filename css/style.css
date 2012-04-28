@@ -1,0 +1,21 @@
+span.delete-task {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	border: 1px solid black;
+	text-align: center;
+	cursor: pointer;
+}
+
+div#message {
+	color: red;
+}
+
+div#addNewTask {
+	width: 100px;
+	height: 16px;
+	display: inline-block;
+	text-align: center;
+	border: 1px solid black;
+	cursor: pointer;
+}
