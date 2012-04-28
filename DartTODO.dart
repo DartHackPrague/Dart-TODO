@@ -12,7 +12,7 @@ class DartTODO {
   void run() {
     document.query('#addNewTask').on.click.add((e) => addTask());
     
-    for (var i = 1; i < 30; i++) {
+    for (var i = 0; i < 30; i++) {
       var taksList = new Cookies().readCookie('task'+i);
       if (taksList != null) {
       var element = new Element.html('<div>' + taksList + ' </div>');
