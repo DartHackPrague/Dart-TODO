@@ -1,10 +1,11 @@
 #import('dart:html');
+#import('Cookies.dart');
 
 class DartTODO {
 
   DartTODO() {
   }
-
+  
   void run() {
     document.query('#addNewTask').on.click.add((e) => addTask());
   }
@@ -16,6 +17,7 @@ class DartTODO {
     document.query('#tasks').nodes.add(element);
     input.value = '';
   }
+  
 
   void write(String message) {
     // the HTML library defines a global "document" variable
@@ -25,4 +27,6 @@ class DartTODO {
 
 void main() {
   new DartTODO().run();
+  
+  new Cookies().createCookie('name','value',60);
 }
