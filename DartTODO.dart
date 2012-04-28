@@ -1,5 +1,5 @@
 #import('dart:html');
-#import('Cookies.dart');
+
 
 class DartTODO {
 
@@ -19,6 +19,7 @@ class DartTODO {
     element.nodes.add(span);
     document.query('#tasks').nodes.add(element);
     input.value = '';
+    document.cookie = 'ppkcookie2=another test; expires=Fri, 3 Aug 2012 20:47:11 UTC; path=/';
   }
   
   void deleteTask(Element element) {
@@ -29,6 +30,4 @@ class DartTODO {
 
 void main() {
   new DartTODO().run();
-  
-  new Cookies().createCookie('name','value',60);
 }
