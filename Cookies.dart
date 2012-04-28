@@ -23,7 +23,7 @@ void createCookie(String name, String value, int days) {
     Date then = new Date.fromEpoch(0, new TimeZone.utc());
     expires = '; expires=' + then.toString();
   }
-  window.alert(name + '=' + value + expires + '; path=/');
+  document.cookie = name + '=' + value + expires + '; path=/';
 }
 
 String readCookie(String name) {
