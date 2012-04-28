@@ -13,16 +13,18 @@ class DartTODO {
   void addTask() {
     InputElement input = document.query('#newTask');
     String task = input.value;
-    var element = new Element.html('<div>' + task + '</div>');   
+    var element = new Element.html('<div>' + task + ' </div>');
+    var span = new Element.html('<span class="delete-task">X</span>');
+    span.on.click.add((e) => deleteTask(element));
+    element.nodes.add(span);
     document.query('#tasks').nodes.add(element);
     input.value = '';
   }
   
-
-  void write(String message) {
-    // the HTML library defines a global "document" variable
-    document.query('#status').innerHTML = message;
+  void deleteTask(Element element) {
+    element.remove();
   }
+  
 }
 
 void main() {

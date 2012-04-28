@@ -5,9 +5,8 @@
  * http://www.quirksmode.org/js/cookies.html
  *
  */
-
 #library('cookies');
-
+#import('dart:html');
 
 class Cookies {
   
