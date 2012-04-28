@@ -9,6 +9,15 @@ class DartTODO {
   
   void run() {
     document.query('#addNewTask').on.click.add((e) => addTask());
+    
+    
+    var taksList = new Cookies().readCookie('task');
+    var element = new Element.html('<div>' + taksList + ' </div>');
+    var span = new Element.html('<span class="delete-task">X</span>');
+    span.on.click.add((e) => deleteTask(element));
+    element.nodes.add(span);
+    document.query('#tasks').nodes.add(element);
+    input.value = '';  
   }
   
   void addTask() {
@@ -37,6 +46,4 @@ class DartTODO {
 
 void main() {
   new DartTODO().run();
-  var taksList = new Cookies().readCookie('task');
-  document.query('#tasks').nodes.add(taksList);
 }
