@@ -4,20 +4,28 @@
 
 class DartTODO {
 
+  var count = 0;
+  
   DartTODO() {
   }
   
   void run() {
     document.query('#addNewTask').on.click.add((e) => addTask());
     
+    for (var i = 0; i < 30; i++) {
+      var taksList = new Cookies().readCookie('task'+i);
+      if (taksList != null) {
+      var element = new Element.html('<div>' + taksList + ' </div>');
+      var span = new Element.html('<span class="delete-task">X</span>');
+      span.on.click.add((e) => deleteTask(element));
+      element.nodes.add(span);
+      document.query('#tasks').nodes.add(element);
+      }
+    }
     
-    var taksList = new Cookies().readCookie('task');
-    if (taksList != null) {
-    var element = new Element.html('<div>' + taksList + ' </div>');
-    var span = new Element.html('<span class="delete-task">X</span>');
-    span.on.click.add((e) => deleteTask(element));
-    element.nodes.add(span);
-    document.query('#tasks').nodes.add(element);
+    var tmpCount = new Cookies().readCookie('count');
+    if (tmpCount != null) {
+      count = Math.parseInt(tmpCount);
     }
   }
   
@@ -35,7 +43,9 @@ class DartTODO {
       element.nodes.add(span);
       document.query('#tasks').nodes.add(element);
       input.value = '';
-      new Cookies().createCookie('task',task,360);
+      new Cookies().createCookie('task'+count,task,360);
+      count += 1;
+      new Cookies().createCookie('count', count ,360);
     }
   }
     
