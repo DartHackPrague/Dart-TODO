@@ -8,8 +8,8 @@ class Base64 {
     var output = "";
     var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
     var i = 0;
-
-    //input = Base64._utf8_encode(input);
+    
+    input = this.utf8Encode(input);
 
     while (i < input.length) {
 
@@ -36,5 +36,34 @@ class Base64 {
 
     return output;  
   }
+  
+  
+  String utf8Encode(String string) {
+    // private method for UTF-8 encoding
+    string = string.replaceAll('/\r\n/g',"\n");
+    var utftext = "";
+
+    for (var n = 0; n < string.length; n++) {
+
+        var c = string.charCodeAt(n);
+
+        if (c < 128) {
+            utftext += new String.fromCharCodes([c]); //String.fromCharCode(c);
+        }
+        else if((c > 127) && (c < 2048)) {
+            utftext += new String.fromCharCodes([(c >> 6) | 192]); //String.fromCharCode((c >> 6) | 192);
+            utftext += new String.fromCharCodes([(c & 63) | 128]);//String.fromCharCode((c & 63) | 128);
+        }
+        else {
+            utftext += new String.fromCharCodes([(c >> 12) | 224]); //String.fromCharCode((c >> 12) | 224);
+            utftext += new String.fromCharCodes([((c >> 6) & 63) | 128]); //String.fromCharCode(((c >> 6) & 63) | 128);
+            utftext += new String.fromCharCodes([(c & 63) | 128]); //String.fromCharCode((c & 63) | 128);
+        }
+
+    }
+    return utftext;
+    
+}
+  
   
 }

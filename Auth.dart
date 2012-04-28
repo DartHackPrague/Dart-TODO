@@ -1,46 +1,45 @@
 #library('auth');
 
+#import('Base64.dart');
+
 class Auth {
   
   final String ISS = '444182523525.apps.googleusercontent.com';
   final String SCOPE = 'https://www.googleapis.com/auth/tasks';  
   final String AUD = 'https://accounts.google.com/o/oauth2/token';
   
+  Base64 base64;
+  
   // Constructor.  
   Auth() {
-    
+    base64 = new Base64();
   }
   
   // Build JWT from params.
   String buildJWT() {
-    StringBuffer buffer = new StringBuffer();
-    // Header.
-    buffer.add('{"alg":"RS256","typ":"JWT"}.');
-    
     String exp = '';
     String iat = '';
     
+    String header = '{"alg":"RS256","typ":"JWT"}';
+    
+    StringBuffer claim = new StringBuffer();
+    
     // Body.
-    buffer.add('{');
+    claim.add('{');    
+    claim.add('"iss":"' + ISS + '",');
+    claim.add('"scope":"' + SCOPE + '",');
+    claim.add('"aud":"' + AUD + '",');
+    claim.add('"exp":"' + exp + '",');
+    claim.add('"iat":"' + iat + '"');  
+    claim.add('}');
     
-    buffer.add('"iss":"' + ISS + '",');
-    buffer.add('"scope":"' + SCOPE + '",');
-    buffer.add('"aud":"' + AUD + '",');
-    buffer.add('"exp":"' + exp + '",');
-    buffer.add('"iat":"' + iat + '"');    
+    // Signature.
+    StringBuffer signature = new StringBuffer();
+    signature.add(this.base64.encode(header));
+    signature.add('.');
+    signature.add(this.base64.encode(claim.toString()));
     
-    buffer.add('}.');
-    return buffer.toString();
+    return claim.toString();
   }
-  
-  // Encode JWT into base64.
-  String encodeJWT(String jwt) {
     
-  }
-  
-  
-  
-  
-  
-  
 }
