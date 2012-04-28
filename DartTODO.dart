@@ -1,13 +1,15 @@
 #import('dart:html');
+#import('Cookies.dart');
 
 class DartTODO {
 
   DartTODO() {
   }
-
+  
   void run() {
     write("Hello World!");
   }
+  
 
   void write(String message) {
     // the HTML library defines a global "document" variable
@@ -17,4 +19,6 @@ class DartTODO {
 
 void main() {
   new DartTODO().run();
+  
+  new Cookies().createCookie('name','value',60);
 }
