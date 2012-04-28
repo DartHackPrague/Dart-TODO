@@ -35,11 +35,25 @@ class Auth {
     
     // Signature.
     StringBuffer signature = new StringBuffer();
+    signature.add('{');
     signature.add(this.base64.encode(header));
     signature.add('.');
-    signature.add(this.base64.encode(claim.toString()));
+    signature.add(this.base64.encode(claim.toString()));  
+    signature.add('}');
     
-    return claim.toString();
+    print(header);
+    print(claim.toString());
+    print(signature.toString());
+    
+    StringBuffer buffer = new StringBuffer();
+    buffer.add(this.base64.encode(header));
+    buffer.add('.');
+    buffer.add(this.base64.encode(claim.toString()));
+    buffer.add('.');
+    buffer.add(this.base64.encode(signature.toString()));
+    
+    return buffer.toString();
   }
+  
     
 }

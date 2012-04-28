@@ -5,17 +5,25 @@ class Base64 {
   String _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
   
   String encode(String input) {
-    var output = "";
+    String output = "";
     var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
     var i = 0;
     
-    input = this.utf8Encode(input);
+    //input = this.utf8Encode(input);
 
-    while (i < input.length) {
-
+    while (i < input.length) {      
         chr1 = input.charCodeAt(i++);
-        chr2 = input.charCodeAt(i++);
-        chr3 = input.charCodeAt(i++);
+        if (i < input.length) {
+          chr2 = input.charCodeAt(i++);  
+        } else {
+          chr2 = null;
+        }
+        if (i < input.length) {
+          chr3 = input.charCodeAt(i++);
+        } else {
+          chr3 = null;
+        }
+        
 
         enc1 = chr1 >> 2;
         enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
@@ -33,7 +41,14 @@ class Base64 {
         this._keyStr[enc3] + this._keyStr[enc4];
 
     }
-
+    /*
+    if (input.length % 3 == 1) {
+      output = output.substring(0, output.length - 2);
+    }
+    if (input.length % 3 == 2) {
+      output = output.substring(0, output.length - 3);
+    }
+    */
     return output;  
   }
   
