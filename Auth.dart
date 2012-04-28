@@ -2,7 +2,7 @@
 
 class Auth {
   
-  final String ISS = '';
+  final String ISS = '444182523525.apps.googleusercontent.com';
   
   final String SCOPE = 'https://www.googleapis.com/auth/tasks';
   
