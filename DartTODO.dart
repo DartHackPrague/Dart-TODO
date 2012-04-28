@@ -25,7 +25,7 @@ class DartTODO {
     
     var tmpCount = new Cookies().readCookie('count');
     if (tmpCount != null) {
-      count = tmpCount;
+      count = Math.parseInt(tmpCount);
     }
   }
   
@@ -45,7 +45,7 @@ class DartTODO {
       input.value = '';
       new Cookies().createCookie('task'+count,task,360);
       count += 1;
-      new Cookies().createCookie('count',count,360);
+      new Cookies().createCookie('count', count ,360);
     }
   }
     
