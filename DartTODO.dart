@@ -1,4 +1,5 @@
 #import('dart:html');
+#import('Cookies.dart');
 
 
 class DartTODO {
@@ -24,11 +25,10 @@ class DartTODO {
       element.nodes.add(span);
       document.query('#tasks').nodes.add(element);
       input.value = '';
-      document.cookie = 'HSID=AYQEVDKrdst; Path=/; Expires=Wed, 13-Jan-2021 22:23:01 GMT; HttpOnly';
-      
+      document.cookie = 'task='+ task +'; Path=/;';   
     }
   }
-  
+    
   void deleteTask(Element element) {
     element.remove();
   }
@@ -37,4 +37,7 @@ class DartTODO {
 
 void main() {
   new DartTODO().run();
+  
+  var list = new Cookies().readCookie('task');
+  window.alert(list);
 }
