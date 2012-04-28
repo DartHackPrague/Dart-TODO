@@ -22,6 +22,11 @@ class DartTODO {
       document.query('#tasks').nodes.add(element);
       }
     }
+    
+    var tmpCount = new Cookies().readCookie('count');
+    if (tmpCount != null) {
+      count = tmpCount;
+    }
   }
   
   void addTask() {
@@ -40,6 +45,7 @@ class DartTODO {
       input.value = '';
       new Cookies().createCookie('task'+count,task,360);
       count += 1;
+      new Cookies().createCookie('count',count,360);
     }
   }
     
