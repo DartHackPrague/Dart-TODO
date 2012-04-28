@@ -6,7 +6,15 @@ class DartTODO {
   }
 
   void run() {
-    write("Hello World!");
+    document.query('#addNewTask').on.click.add((e) => addTask());
+  }
+  
+  void addTask() {
+    InputElement input = document.query('#newTask');
+    String task = input.value;
+    var element = new Element.html('<div>' + task + '</div>');   
+    document.query('#tasks').nodes.add(element);
+    input.value = '';
   }
 
   void write(String message) {
